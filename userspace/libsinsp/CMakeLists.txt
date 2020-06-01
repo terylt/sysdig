@@ -130,6 +130,7 @@ list(APPEND SINSP_SOURCES
 	container_engine/mesos.cpp
 	container_engine/rkt.cpp
 	container_engine/bpm.cpp
+	container_engine/podman.cpp
 	runc.cpp)
 endif()
 

@@ -28,6 +28,7 @@ limitations under the License.
 #include "container_engine/lxc.h"
 #include "container_engine/mesos.h"
 #include "container_engine/bpm.h"
+#include "container_engine/podman.h"
 
 #include "sinsp.h"
 #include "sinsp_int.h"
@@ -553,6 +554,11 @@ void sinsp_container_manager::create_engines()
 		auto bpm_engine = std::make_shared<container_engine::bpm>(*this);
 		m_container_engines.push_back(bpm_engine);
 		m_container_engine_by_type[CT_BPM] = bpm_engine;
+	}
+	{
+		auto podman_engine = std::make_shared<container_engine::podman>(*this);
+		m_container_engines.push_back(podman_engine);
+		m_container_engine_by_type[CT_PODMAN] = podman_engine;
 	}
 #endif // _WIN32
 #endif // CYGWING_AGENT
